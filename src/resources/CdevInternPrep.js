@@ -29,7 +29,7 @@ const Data = [
   {
     name: "Quant Resources",
     link:
-      "https://docs.google.com/presentation/d/1G0EpBLRU_Yu5Qc1N_hnuNoMKsSCd3jZU7ag0BN2qG9w/edit?usp=sharing",
+      "https://www.dropbox.com/sh/zf0curmnh7ke9vz/AABXvvX3xGYdJqvTU_sH0fI3a?dl=0",
   },
   {
     name: "Product Management Resources",
