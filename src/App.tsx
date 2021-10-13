@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// styles for this kit
+import "./assets/css/bootstrap.min.css";
+import "./assets/scss/now-ui-kit.scss?v=1.4.0";
+import "./assets/demo/demo.css?v=1.4.0";
+import "./assets/demo/nucleo-icons-page-styles.css?v=1.4.0";
+import Home from "./pages/Home";
+import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
+import CDevWing from "./pages/CDevWing";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/research">
+          <CDevWing />
+        </Route>
+        <Redirect to="/home"></Redirect>
+      </Switch>
+      {/* <Redirect to="/home"></Redirect> */}
+    </BrowserRouter>
   );
 }
 
