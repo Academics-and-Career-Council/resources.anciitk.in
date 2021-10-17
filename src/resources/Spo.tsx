@@ -1,13 +1,12 @@
 import React from "react";
-
 // reactstrap components
 import {
   Card,
   CardBody,
-  TabContent,
-  TabPane,
   Container,
   Row,
+  TabContent,
+  TabPane,
 } from "reactstrap";
 
 //ResourceData
@@ -37,7 +36,9 @@ const Spo = () => {
             <CardBody>
               <TabContent className="text-left" activeTab={"iconPills"}>
                 <TabPane tabId="iconPills">
-                  <p className="h5" color="dark"> {/* was class originally*/}
+                  <p className="h5" color="dark">
+                    {" "}
+                    {/* was class originally*/}
                     <ul>
                       {Data.map((resource) => {
                         return (

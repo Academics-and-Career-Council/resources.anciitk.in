@@ -6,7 +6,7 @@ import "./assets/demo/demo.css?v=1.4.0";
 import "./assets/demo/nucleo-icons-page-styles.css?v=1.4.0";
 import Home from "./pages/Home";
 import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
-import CDevWing from "./pages/CDevWing";
+import Cwing from "./container/CWing";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/research">
-          <CDevWing />
+          <Cwing/>
         </Route>
         <Redirect to="/home"></Redirect>
       </Switch>
