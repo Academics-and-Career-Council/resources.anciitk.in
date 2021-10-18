@@ -10,24 +10,11 @@ import {
   Row,
 } from "reactstrap";
 
-import { createFragmentContainer, graphql } from "react-relay";
+// import types
+import {item} from "../Types/types"
 
-type subItem = {
-  id: string;
-  name: string;
-  category: string;
-  link: string;
-};
 
-interface props {
-  id: string;
-  wing: string;
-  title: string;
-  category?: string;
-  items: Readonly<Array<subItem>>
-}
-
-const DocBlock: React.FC<props> = ({ id, wing, title, items }) => {
+const DocBlock: React.FC<item> = ({ id, wing, title, objects }) => {
   return (
     <>
       <Container>
@@ -41,7 +28,7 @@ const DocBlock: React.FC<props> = ({ id, wing, title, items }) => {
                     {" "}
                     {/* was class originally*/}
                     <ul>
-                      {items.map((resource) => {
+                      {objects.map((resource) => {
                         return (
                           <li>
                             <a

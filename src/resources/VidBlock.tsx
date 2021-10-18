@@ -12,27 +12,16 @@ import {
   Container,
 } from "reactstrap";
 
-type SubResourceType =  {
-  gdrive:string,
-  pdf:string,
-  youtube:string,
-  zoom:string
-}
-
-interface subItem {
-  readonly id: string;
-  readonly name: string;
-  readonly category: string;
-  readonly link: string;
-}
+import {subItem} from "../Types/types"
 
 interface props {
   id: string;
   wing: string;
+  order: number;
   title: string;
   category?: string;
-  // items: Array<subItem>;
-  readonly items : Readonly<Array<subItem>>
+  // objects: Array<subItem>;
+  readonly objects : Readonly<Array<subItem>>
 
   iconPills: string;
   setIconPills: React.Dispatch<React.SetStateAction<string>>;
@@ -44,7 +33,7 @@ const VidBlock: React.FC<props> = ({
   id,
   wing,
   title,
-  items,
+  objects,
   iconPills,
   setIconPills,
   pills,
@@ -57,7 +46,7 @@ const VidBlock: React.FC<props> = ({
         <Card>
           <CardHeader>
             <Nav className="justify-content-center" role="tablist" tabs>
-              {items.map((resource, index) => {
+              {objects.map((resource, index) => {
                 return (
                   <NavItem>
                     <NavLink
@@ -80,7 +69,7 @@ const VidBlock: React.FC<props> = ({
               className="text-center"
               activeTab={"iconPills" + iconPills}
             >
-              {items.map((resource, index) => {
+              {objects.map((resource, index) => {
                 return (
                   <TabPane tabId={"iconPills" + index.toString()}>
                     <iframe

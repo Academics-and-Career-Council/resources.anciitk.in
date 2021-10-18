@@ -12,16 +12,18 @@ import DocBlock from "resources/DocBlock";
 import VidBlock from "resources/VidBlock";
 import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery } from "react-relay";
-import { CWingQuery } from "__generated__/CWingQuery.graphql";
-
+import { CWingQuery} from "__generated__/CWingQuery.graphql";
+import lodash from "lodash";
 interface props {
   queryRef: any;
   query: GraphQLTaggedNode;
 }
 
 const Cwing: React.FC<props> = ({ queryRef, query }) => {
-  const data = usePreloadedQuery<CWingQuery>(query, queryRef);
-  
+  const data = usePreloadedQuery<CWingQuery>(query, queryRef).getResourcesByWing;
+  let mutData = lodash.cloneDeep(data)
+  // @ts-ignore
+  mutData.sort((a,b) => a.order - b.order)
   const [iconPills, setIconPills] = React.useState("0");
   const [pills, setPills] = React.useState("0");
   React.useEffect(() => {
@@ -56,15 +58,17 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
             </Row>
           </Container>
           <div className="section section-tabs">
-            {data.getResourcesByWing?.map((resource) => {
+            
+            {mutData.map((resource) => {
               if (resource?.category.toString() === "DOCUMENT") {
                 return (
                   <DocBlock
                     key={resource.id}
                     id={resource.id}
+                    order={resource.order}
                     wing={resource.wing}
                     title={resource.title}
-                    items={resource.objects}
+                    objects={resource.objects}
                   />
                 );
               } else {
@@ -73,8 +77,9 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
                     key={resource.id}
                     id={resource.id}
                     wing={resource.wing}
+                    order={resource.order}
                     title={resource.title}
-                    items={resource.objects}
+                    objects={resource.objects}
                     setIconPills={setIconPills}
                     iconPills={iconPills}
                     pills={pills}

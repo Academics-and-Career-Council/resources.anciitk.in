@@ -20,6 +20,7 @@ type SubResource {
 type Resource  {
   id: ID!
   wing: String!
+  order: Int!
   title: String!
   category: ResourceType!
   objects: [SubResource!]!

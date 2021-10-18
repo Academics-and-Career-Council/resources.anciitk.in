@@ -13,6 +13,7 @@ export type CWingQueryResponse = {
     readonly getResourcesByWing: ReadonlyArray<{
         readonly id: string;
         readonly wing: string;
+        readonly order: number;
         readonly title: string;
         readonly category: ResourceType;
         readonly objects: ReadonlyArray<{
@@ -37,6 +38,7 @@ query CWingQuery(
   getResourcesByWing(wing: $params) {
     id
     wing
+    order
     title
     category
     objects {
@@ -98,6 +100,13 @@ v3 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
+        "name": "order",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "title",
         "storageKey": null
       },
@@ -151,14 +160,14 @@ return {
     "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "256d07cef0393316c97f145c6a7ed6ed",
+    "cacheID": "95b1a589f88fd9a4dc37d74e30bbd40b",
     "id": null,
     "metadata": {},
     "name": "CWingQuery",
     "operationKind": "query",
-    "text": "query CWingQuery(\n  $params: String!\n) {\n  getResourcesByWing(wing: $params) {\n    id\n    wing\n    title\n    category\n    objects {\n      id\n      name\n      category\n      link\n    }\n  }\n}\n"
+    "text": "query CWingQuery(\n  $params: String!\n) {\n  getResourcesByWing(wing: $params) {\n    id\n    wing\n    order\n    title\n    category\n    objects {\n      id\n      name\n      category\n      link\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '3d739e237cdc4530e2741978f60fa8c0';
+(node as any).hash = '514ef23cc7951c9b4f99520ce070c834';
 export default node;

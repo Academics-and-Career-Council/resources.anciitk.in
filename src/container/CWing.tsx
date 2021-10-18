@@ -9,6 +9,7 @@ const query = graphql`
     getResourcesByWing(wing:$params){
     id
     wing
+    order
     title
     category
     objects {
