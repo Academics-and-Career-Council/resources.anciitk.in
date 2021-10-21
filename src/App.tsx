@@ -26,18 +26,6 @@ function App() {
         <Route path="/cwing">
           <Cwing/>
         </Route>
-        {/* <Route path="/" render={() =>
-          <Redirect
-          loginUrl={`${process.env.NEXT_PUBLIC_BASE_URL}/login`}
-          historyPush={router.push}
-          sessionState={session}
-          setSessionState={setSession}
-          basePath={`${process.env.NEXT_PUBLIC_BASE_URL}`}
-          path={(next as string) || "home"}
-          ory={ory}
-          xenon={xenon}
-        />
-        }/> */}
         <Route path="/" component={Verify} />
         <DomRedirect to="/"></DomRedirect>
       </Switch>
