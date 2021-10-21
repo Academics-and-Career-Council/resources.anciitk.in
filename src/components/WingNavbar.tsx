@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // reactstrap components
 import {
+  Button,
   Collapse,
   DropdownToggle,
   DropdownMenu,
@@ -142,6 +143,20 @@ const WingNavbar:React.FC<props> = ({wingname}) => {
                 <UncontrolledTooltip target="#instagram-tooltip">
                   Follow us on LinkedIn
                 </UncontrolledTooltip>
+              </NavItem>
+              <NavItem>
+                <Button
+                  className="nav-link btn-neutral"
+                  color="info"
+                  href="#"
+                  id="upgrade-to-pro"
+                  // onClick={(e) => )}
+                >
+                  <p>Sign Out</p>
+                </Button>
+                {/* <UncontrolledTooltip target="#upgrade-to-pro">
+                  Sign Out
+                </UncontrolledTooltip> */}
               </NavItem>
             </Nav>
           </Collapse>

@@ -25,7 +25,7 @@ const CWingContainer:React.FC = () => {
   const [queryRef, loadQuery] = useQueryLoader<CWingQuery>(query)
   useEffect(() => {
     loadQuery({params: "career development"}, {
-      fetchPolicy: "network-only"
+      fetchPolicy: "store-and-network"
     })
   }, [loadQuery])
 

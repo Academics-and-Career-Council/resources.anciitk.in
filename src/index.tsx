@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { RelayEnvironmentProvider } from "react-relay"
 
 import Environment from "./relay/environment"
+import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RelayEnvironmentProvider environment={Environment}>
-      <App />
-    </RelayEnvironmentProvider>
+    <RecoilRoot>
+      <RelayEnvironmentProvider environment={Environment}>
+        <App />
+      </RelayEnvironmentProvider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 );

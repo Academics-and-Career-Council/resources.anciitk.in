@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import { useRecoilState } from "recoil";
+import { recoilSessionState } from "../pkg/recoilDeclarations";
 
 // reactstrap components
 import { Container, Row, Col } from "reactstrap";
@@ -8,22 +11,34 @@ import WingNavbar from "../components/WingNavbar";
 import WingHeader from "../components/WingHeader";
 import Footer from "../components/Footer";
 //Resources
-import DocBlock from "resources/DocBlock";
-import VidBlock from "resources/VidBlock";
+import DocBlock from "../components/DocBlock";
+import VidBlock from "../components/VidBlock";
 import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery } from "react-relay";
-import { CWingQuery} from "__generated__/CWingQuery.graphql";
-import lodash from "lodash";
+import { CWingQuery, CWingQueryResponse} from "__generated__/CWingQuery.graphql";
 interface props {
   queryRef: any;
   query: GraphQLTaggedNode;
 }
 
+type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };
+
 const Cwing: React.FC<props> = ({ queryRef, query }) => {
+  const [session] = useRecoilState(recoilSessionState);
+  const history = useHistory()
+  useEffect(() => {
+    if (!session) {
+      history.push("/?next=home");
+    }
+  }, [session, history]);
+
+  const [result, setResult] = useState<CWingQueryResponse["getResourcesByWing"]>([]);
   const data = usePreloadedQuery<CWingQuery>(query, queryRef).getResourcesByWing;
-  let mutData = lodash.cloneDeep(data)
-  // @ts-ignore
-  mutData.sort((a,b) => a.order - b.order)
+  useEffect(() => {
+    let copy:DeepWriteable<CWingQueryResponse["getResourcesByWing"]> = JSON.parse(JSON.stringify(data))
+    copy.sort((a,b) => a.order - b.order)
+    setResult(copy);
+  }, [data])
   const [iconPills, setIconPills] = React.useState("0");
   const [pills, setPills] = React.useState("0");
   React.useEffect(() => {
@@ -59,7 +74,7 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
           </Container>
           <div className="section section-tabs">
             
-            {mutData.map((resource) => {
+            {result.map((resource) => {
               if (resource?.category.toString() === "DOCUMENT") {
                 return (
                   <DocBlock
