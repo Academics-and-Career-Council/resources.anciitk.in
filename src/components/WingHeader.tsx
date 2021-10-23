@@ -1,5 +1,5 @@
 import React from "react";
-import {useRef} from "react";
+import { useRef } from "react";
 
 // reactstrap components
 import { Container } from "reactstrap";
@@ -8,26 +8,26 @@ import { Container } from "reactstrap";
 import imgLogo from "../assets/img/anclogo.png";
 import imgHeader from "../assets/img/bg5.jpg";
 
-
 // core components
 
-const WingHeader = () => { // removed props here as it was not used
+const WingHeader = () => {
+  // removed props here as it was not used
   let pageHeader = useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    if (window.innerWidth > 991) {
-      const updateScroll = () => {
-        let windowScrollTop = window.pageYOffset / 3;
-        if (pageHeader && pageHeader.current) {
-          pageHeader.current.style.transform =
+    const updateScroll = () => {
+      let windowScrollTop = window.pageYOffset / 3;
+      if (pageHeader && pageHeader.current) {
+        pageHeader.current.style.transform =
           "translate3d(0," + windowScrollTop + "px,0)";
-        }
-      };
+      }
+    };
+    if (window.innerWidth > 991) {
       window.addEventListener("scroll", updateScroll);
-      return function cleanup() {
-        window.removeEventListener("scroll", updateScroll);
-      };
     }
+    return function cleanup() {
+      window.removeEventListener("scroll", updateScroll);
+    };
   });
   return (
     <React.Fragment>

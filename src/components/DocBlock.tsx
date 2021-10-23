@@ -11,10 +11,9 @@ import {
 } from "reactstrap";
 
 // import types
-import {item} from "../Types/types"
+import { item } from "../Types/types";
 
-
-const DocBlock: React.FC<item> = ({ id, wing, title, objects }) => {
+const DocBlock: React.FC<item> = ({ title, objects }) => {
   return (
     <>
       <Container>
@@ -30,7 +29,7 @@ const DocBlock: React.FC<item> = ({ id, wing, title, objects }) => {
                     <ul>
                       {objects.map((resource) => {
                         return (
-                          <li>
+                          <li key={resource.id}>
                             <a
                               href={resource.link}
                               style={{

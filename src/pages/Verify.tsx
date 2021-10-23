@@ -7,34 +7,34 @@ import { useRecoilState } from "recoil";
 import { recoilSessionState } from "../pkg/recoilDeclarations";
 import { useHistory } from "react-router";
 
-interface location {
-  pathname: string,
-  search: string,
-  hash: string,
-  key: string
+interface props {
+  location: {
+    pathname: string;
+    search: string;
+    hash: string;
+    key: string;
+  }
 }
 
-const Component:React.FC<location> = ({ search }) =>{
+const Component: React.FC<props> = ({location}) => {
   const history = useHistory();
   const [session, setSession] = useRecoilState(recoilSessionState);
-  let param:string = "";
-  try {
-    param = search.substring(6, search.length);
-  }catch {
+  let param: string = location.search.substring(6, location.search.length);
+  if (!param) {
     param = "home";
   }
   return (
-      <Redirect
-        loginUrl={`${process.env.REACT_APP_PUBLIC_BASE_URL}/login`}
-        historyPush={history.push}
-        sessionState={session}
-        setSessionState={setSession}
-        basePath={`${process.env.REACT_APP_PUBLIC_BASE_URL}`}
-        path={(param as string)}
-        ory={ory}
-        xenon={xenon}
-      />
+    <Redirect
+      loginUrl={`${process.env.REACT_APP_ACCOUNTS_BASE_URL}/login`}
+      historyPush={history.push}
+      sessionState={session}
+      setSessionState={setSession}
+      basePath={`${process.env.REACT_APP_PUBLIC_BASE_URL}`}
+      path={param as string}
+      ory={ory}
+      xenon={xenon}
+    />
   );
-}
+};
 
-export default Component
+export default Component;

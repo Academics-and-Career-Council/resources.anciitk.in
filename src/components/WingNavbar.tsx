@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import {
   Button,
   Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
@@ -17,13 +13,17 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
+import { useRecoilState } from "recoil";
+import { recoilSessionState } from "../pkg/recoilDeclarations";
+
 interface props {
-  wingname: string
+  wingname: string;
 }
 
-const WingNavbar:React.FC<props> = ({wingname}) => {
+const WingNavbar: React.FC<props> = ({ wingname }) => {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
+  const [session] = useRecoilState(recoilSessionState);
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
@@ -56,7 +56,7 @@ const WingNavbar:React.FC<props> = ({wingname}) => {
       ) : null}
       <Navbar className={"fixed-top " + navbarColor} color="dark" expand="lg">
         <Container>
-          <UncontrolledDropdown className="button-dropdown">
+          {/* <UncontrolledDropdown className="button-dropdown">
             <DropdownToggle
               caret
               data-toggle="dropdown"
@@ -83,7 +83,7 @@ const WingNavbar:React.FC<props> = ({wingname}) => {
                 Back to AnC
               </DropdownItem>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
           <div className="navbar-translate">
             <NavbarBrand target="_blank" id="navbar-brand">
               {wingname}
@@ -110,12 +110,12 @@ const WingNavbar:React.FC<props> = ({wingname}) => {
             <Nav navbar>
               <NavItem>
                 <NavLink to="/home" tag={Link}>
-                  Back to Home
+                  Home
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://anciitk.in/contact.html">
-                  Contact Us
+                <NavLink href="http://localhost:3000/dashboard">
+                  Dashboard
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -148,9 +148,8 @@ const WingNavbar:React.FC<props> = ({wingname}) => {
                 <Button
                   className="nav-link btn-neutral"
                   color="info"
-                  href="#"
+                  href={session?.logoutUrl}
                   id="upgrade-to-pro"
-                  // onClick={(e) => )}
                 >
                   <p>Sign Out</p>
                 </Button>

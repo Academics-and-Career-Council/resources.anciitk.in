@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { RelayEnvironmentProvider } from "react-relay"
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { RelayEnvironmentProvider } from "react-relay";
 
-import Environment from "./relay/environment"
-import { RecoilRoot } from 'recoil';
+import Environment from "./graphql/environment";
+import { RecoilRoot } from "recoil";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +16,7 @@ ReactDOM.render(
       </RelayEnvironmentProvider>
     </RecoilRoot>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

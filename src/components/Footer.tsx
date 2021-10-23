@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 // reactstrap components
 import { Container } from "reactstrap";
@@ -7,8 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer" data-background-color="black">
       <Container>
-        <nav>
-        </nav>
+        <nav></nav>
         <div className="copyright" id="copyright">
           &copy; {new Date().getFullYear()},
           <a href="https://anciitk.in/" target="_blank" rel="noreferrer">
@@ -18,6 +17,6 @@ const Footer = () => {
       </Container>
     </footer>
   );
-}
+};
 
 export default Footer;

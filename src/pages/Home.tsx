@@ -1,4 +1,4 @@
-import React, {useEffect, } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 
 // core components
@@ -12,7 +12,7 @@ import { recoilSessionState } from "../pkg/recoilDeclarations";
 
 function Home() {
   const [session] = useRecoilState(recoilSessionState);
-  const history = useHistory()
+  const history = useHistory();
   useEffect(() => {
     if (!session) {
       history.push("/?next=home");

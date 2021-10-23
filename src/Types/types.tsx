@@ -11,7 +11,7 @@ export interface item {
   order: number;
   title: string;
   category?: string;
-  objects: Readonly<Array<subItem>>
+  objects: Readonly<Array<subItem>>;
 }
 
 export interface mutItem {
@@ -20,5 +20,5 @@ export interface mutItem {
   order: number;
   title: string;
   category: string;
-  objects: Array<subItem>
+  objects: Array<subItem>;
 }

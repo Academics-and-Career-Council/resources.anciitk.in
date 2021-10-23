@@ -15,7 +15,10 @@ import DocBlock from "../components/DocBlock";
 import VidBlock from "../components/VidBlock";
 import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery } from "react-relay";
-import { CWingQuery, CWingQueryResponse} from "__generated__/CWingQuery.graphql";
+import {
+  CWingQuery,
+  CWingQueryResponse,
+} from "__generated__/CWingQuery.graphql";
 interface props {
   queryRef: any;
   query: GraphQLTaggedNode;
@@ -25,22 +28,27 @@ type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };
 
 const Cwing: React.FC<props> = ({ queryRef, query }) => {
   const [session] = useRecoilState(recoilSessionState);
-  const history = useHistory()
+  const history = useHistory();
   useEffect(() => {
     if (!session) {
-      history.push("/?next=home");
+      history.push("/?next=cwing");
     }
   }, [session, history]);
 
-  const [result, setResult] = useState<CWingQueryResponse["getResourcesByWing"]>([]);
-  const data = usePreloadedQuery<CWingQuery>(query, queryRef).getResourcesByWing;
+  const [result, setResult] = useState<
+    CWingQueryResponse["getResourcesByWing"]
+  >([]);
+  const data = usePreloadedQuery<CWingQuery>(
+    query,
+    queryRef
+  ).getResourcesByWing;
   useEffect(() => {
-    let copy:DeepWriteable<CWingQueryResponse["getResourcesByWing"]> = JSON.parse(JSON.stringify(data))
-    copy.sort((a,b) => a.order - b.order)
+    let copy: DeepWriteable<CWingQueryResponse["getResourcesByWing"]> =
+      JSON.parse(JSON.stringify(data));
+    copy.sort((a, b) => a.order - b.order);
     setResult(copy);
-  }, [data])
+  }, [data]);
   const [iconPills, setIconPills] = React.useState("0");
-  const [pills, setPills] = React.useState("0");
   React.useEffect(() => {
     document.title = "Career Development Wing | Resources | AnC";
     document.body.classList.add("profile-page");
@@ -73,7 +81,6 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
             </Row>
           </Container>
           <div className="section section-tabs">
-            
             {result.map((resource) => {
               if (resource?.category.toString() === "DOCUMENT") {
                 return (
@@ -97,8 +104,6 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
                     objects={resource.objects}
                     setIconPills={setIconPills}
                     iconPills={iconPills}
-                    pills={pills}
-                    setPills={setPills}
                   />
                 );
               }

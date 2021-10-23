@@ -12,7 +12,7 @@ import {
   Container,
 } from "reactstrap";
 
-import {subItem} from "../Types/types"
+import { subItem } from "../Types/types";
 
 interface props {
   id: string;
@@ -20,24 +20,17 @@ interface props {
   order: number;
   title: string;
   category?: string;
-  // objects: Array<subItem>;
-  readonly objects : Readonly<Array<subItem>>
+  readonly objects: Readonly<Array<subItem>>;
 
   iconPills: string;
   setIconPills: React.Dispatch<React.SetStateAction<string>>;
-  pills: string;
-  setPills: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const VidBlock: React.FC<props> = ({
-  id,
-  wing,
   title,
   objects,
   iconPills,
   setIconPills,
-  pills,
-  setPills,
 }) => {
   return (
     <Container>
@@ -50,6 +43,7 @@ const VidBlock: React.FC<props> = ({
                 return (
                   <NavItem>
                     <NavLink
+                      key={resource.id}
                       className={iconPills === index.toString() ? "active" : ""}
                       href="#pablo"
                       onClick={(e) => {
@@ -71,7 +65,10 @@ const VidBlock: React.FC<props> = ({
             >
               {objects.map((resource, index) => {
                 return (
-                  <TabPane tabId={"iconPills" + index.toString()}>
+                  <TabPane
+                    tabId={"iconPills" + index.toString()}
+                    key={resource.id}
+                  >
                     <iframe
                       title={resource.name}
                       width="100%"
