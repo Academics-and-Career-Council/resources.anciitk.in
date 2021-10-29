@@ -29,11 +29,10 @@ type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };
 const Cwing: React.FC<props> = ({ queryRef, query }) => {
   const [session] = useRecoilState(recoilSessionState);
   const history = useHistory();
-  useEffect(() => {
-    if (!session) {
-      history.push("/?next=cwing");
-    }
-  }, [history]);
+
+  if (!session) {
+    history.push("/?next=cwing");
+  }
 
   const [result, setResult] = useState<
     CWingQueryResponse["getResourcesByWing"]

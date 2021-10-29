@@ -13,11 +13,10 @@ import { recoilSessionState } from "../pkg/recoilDeclarations";
 function Home() {
   const [session] = useRecoilState(recoilSessionState);
   const history = useHistory();
-  useEffect(() => {
-    if (!session) {
-      history.push("/?next=home");
-    }
-  }, [history]);
+
+  if (!session) {
+    history.push("/?next=home");
+  }
 
   React.useEffect(() => {
     document.body.classList.add("index-page");
