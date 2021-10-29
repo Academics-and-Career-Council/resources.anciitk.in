@@ -17,7 +17,7 @@ function Home() {
     if (!session) {
       history.push("/?next=home");
     }
-  }, [session, history]);
+  }, [history]);
 
   React.useEffect(() => {
     document.body.classList.add("index-page");
