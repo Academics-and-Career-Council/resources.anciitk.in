@@ -1,6 +1,7 @@
 import React from "react";
 // reactstrap components
 import {
+  Button,
   Collapse,
   NavbarBrand,
   Navbar,
@@ -11,9 +12,13 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
+import { useRecoilState } from "recoil";
+import { recoilSessionState } from "../pkg/recoilDeclarations";
+
 function HomeNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
+  const [session] = useRecoilState(recoilSessionState);
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
@@ -75,6 +80,16 @@ function HomeNavbar() {
             <Nav navbar>
               <NavItem>
                 <NavLink
+                  href={
+                    process.env.REACT_APP_PUBLIC_ACCOUNTS_BASE_URL +
+                    "/dashboard"
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
                   href="https://www.facebook.com/ANCIITK/"
                   target="_blank"
                   id="facebook-tooltip"
@@ -98,6 +113,16 @@ function HomeNavbar() {
                 <UncontrolledTooltip target="#instagram-tooltip">
                   Follow us on LinkedIn
                 </UncontrolledTooltip>
+              </NavItem>
+              <NavItem>
+                <Button
+                  className="nav-link btn-neutral"
+                  color="info"
+                  href={session?.logoutUrl}
+                  id="upgrade-to-pro"
+                >
+                  <p>Sign Out</p>
+                </Button>
               </NavItem>
             </Nav>
           </Collapse>

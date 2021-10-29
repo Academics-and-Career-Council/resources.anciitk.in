@@ -114,7 +114,7 @@ const WingNavbar: React.FC<props> = ({ wingname }) => {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="http://localhost:3000/dashboard">
+                <NavLink href={process.env.REACT_APP_PUBLIC_ACCOUNTS_BASE_URL+"/dashboard"}>
                   Dashboard
                 </NavLink>
               </NavItem>

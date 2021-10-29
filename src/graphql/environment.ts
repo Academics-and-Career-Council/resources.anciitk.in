@@ -25,7 +25,6 @@ const fetchQuery:FetchFunction = async (params, variables) => {
 
   return await axios.post(gqlURL, JSON.stringify({query:params.text, variables}), {headers, withCredentials:true} )
   .then((response) => {
-    console.log(response.data)
     return response.data
   })
 }
