@@ -48,7 +48,7 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
     setResult(copy);
   }, [data]);
   const [iconPills, setIconPills] = React.useState("0");
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = "Career Development Wing | Resources | AnC";
     document.body.classList.add("profile-page");
     document.body.classList.add("sidebar-collapse");

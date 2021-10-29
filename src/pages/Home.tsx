@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
 import { useHistory } from "react-router";
+import {useEffect} from "react"
 
 // core components
 import HomeHeader from "../components/HomeHeader";
@@ -18,7 +18,7 @@ function Home() {
     history.push("/?next=home");
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
