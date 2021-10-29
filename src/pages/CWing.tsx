@@ -33,7 +33,7 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
     if (!session) {
       history.push("/?next=cwing");
     }
-  }, [session, history]);
+  }, [history]);
 
   const [result, setResult] = useState<
     CWingQueryResponse["getResourcesByWing"]
