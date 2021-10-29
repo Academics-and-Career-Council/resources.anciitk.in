@@ -1,3 +1,4 @@
+import { useState } from "react";
 // reactstrap components
 import {
   Card,
@@ -21,17 +22,13 @@ interface props {
   title: string;
   category?: string;
   readonly objects: Readonly<Array<subItem>>;
-
-  iconPills: string;
-  setIconPills: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const VidBlock: React.FC<props> = ({
   title,
   objects,
-  iconPills,
-  setIconPills,
 }) => {
+  const [iconPills, setIconPills] = useState("0");
   return (
     <Container>
       <Row>

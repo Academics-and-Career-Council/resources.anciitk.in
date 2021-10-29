@@ -47,7 +47,6 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
     copy.sort((a, b) => a.order - b.order);
     setResult(copy);
   }, [data]);
-  const [iconPills, setIconPills] = React.useState("0");
   useEffect(() => {
     document.title = "Career Development Wing | Resources | AnC";
     document.body.classList.add("profile-page");
@@ -101,8 +100,6 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
                     order={resource.order}
                     title={resource.title}
                     objects={resource.objects}
-                    setIconPills={setIconPills}
-                    iconPills={iconPills}
                   />
                 );
               }
