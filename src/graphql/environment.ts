@@ -18,8 +18,8 @@ const fetchQuery:FetchFunction = async (params, variables) => {
   const headers = {
     "Content-type": "application/json",
   }
-  if (process.env.REACT_APP_GQL_SERVER) {
-    gqlURL= process.env?.REACT_APP_GQL_SERVER;
+  if (process.env.REACT_APP_PUBLIC_GQL_SERVER) {
+    gqlURL= process.env?.REACT_APP_PUBLIC_GQL_SERVER;
     console.log(gqlURL);
   }
 

@@ -25,7 +25,7 @@ const Component: React.FC<props> = ({location}) => {
   }
   return (
     <Redirect
-      loginUrl={`${process.env.REACT_APP_ACCOUNTS_BASE_URL}/login`}
+      loginUrl={`${process.env.REACT_APP_PUBLIC_ACCOUNTS_BASE_URL}/login`}
       historyPush={history.push}
       sessionState={session}
       setSessionState={setSession}
