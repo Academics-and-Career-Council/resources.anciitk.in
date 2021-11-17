@@ -48,7 +48,7 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
     setResult(copy);
   }, [data]);
   useEffect(() => {
-    document.title = "Career Development Wing | Resources | AnC";
+    document.title = "International Realtions Wing | Resources | AnC";
     document.body.classList.add("profile-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");

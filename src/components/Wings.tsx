@@ -87,7 +87,7 @@ function Wings() {
                 CDC realizes its vision at the earliest possible and that it
                 provides all the necessary support for this purpose.
               </h5>
-              <NavLink to="/intrelwing">
+              <NavLink to="/intlrelwing">
                 <Button
                   className="btn-round mr-1"
                   color="dark"

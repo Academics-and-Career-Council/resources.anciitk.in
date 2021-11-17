@@ -25,7 +25,7 @@ function App() {
         <Route path="/cwing">
           <Cwing />
         </Route>
-        <Route path="intlrelwing">
+        <Route path="/intlrelwing">
           <IntRelWing />
         </Route>
         <Route path="/" component={Verify} />
