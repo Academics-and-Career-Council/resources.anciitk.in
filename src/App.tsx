@@ -12,6 +12,7 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import Cwing from "./containers/CWing";
+import IntRelWing from "./containers/IntRelWing";
 import Verify from "./pages/Verify";
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/cwing">
           <Cwing />
+        </Route>
+        <Route path="intlrelwing">
+          <IntRelWing />
         </Route>
         <Route path="/" component={Verify} />
         <DomRedirect to="/"></DomRedirect>

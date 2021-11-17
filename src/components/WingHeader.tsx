@@ -10,7 +10,7 @@ import imgHeader from "../assets/img/bg5.jpg";
 
 // core components
 
-const WingHeader = () => {
+const WingHeader:React.FC<{wing:string}> = ({wing}) => {
   // removed props here as it was not used
   let pageHeader = useRef<HTMLDivElement>(null);
 
@@ -46,7 +46,7 @@ const WingHeader = () => {
           <div className="photo-container">
             <img alt="..." src={imgLogo}></img>
           </div>
-          <h3 className="title">CAREER DEVELOPMENT WING</h3>
+          <h3 className="title">{wing}</h3>
           <p className="category">RESOURCES</p>
         </Container>
       </div>

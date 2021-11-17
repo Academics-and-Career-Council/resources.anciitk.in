@@ -16,9 +16,9 @@ import VidBlock from "../components/VidBlock";
 import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery } from "react-relay";
 import {
-  CWingQuery,
-  CWingQueryResponse,
-} from "__generated__/CWingQuery.graphql";
+  IntRelWingQuery,
+  IntRelWingQueryResponse,
+} from "../__generated__/IntRelWingQuery.graphql";
 interface props {
   queryRef: any;
   query: GraphQLTaggedNode;
@@ -31,18 +31,18 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
   const history = useHistory();
 
   if (!session) {
-    history.push("/?next=cwing");
+    history.push("/?next=intlrelwing");
   }
 
   const [result, setResult] = useState<
-    CWingQueryResponse["getResourcesByWing"]
+    IntRelWingQueryResponse["getResourcesByWing"]
   >([]);
-  const data = usePreloadedQuery<CWingQuery>(
+  const data = usePreloadedQuery<IntRelWingQuery>(
     query,
     queryRef
   ).getResourcesByWing;
   useEffect(() => {
-    let copy: DeepWriteable<CWingQueryResponse["getResourcesByWing"]> =
+    let copy: DeepWriteable<IntRelWingQueryResponse["getResourcesByWing"]> =
       JSON.parse(JSON.stringify(data));
     copy.sort((a, b) => a.order - b.order);
     setResult(copy);
@@ -61,16 +61,16 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
   }, []);
   return (
     <>
-      <WingNavbar wingname="CAREER DEVELOPMENT WING" />
+      <WingNavbar wingname="INTERNATIONAL RELATIONS WING" />
       <div className="wrapper">
-        <WingHeader wing="CAREER DEVELOPMENT WING"/>
+        <WingHeader wing="INTERNATIONAL RELATIONS WING"/>
         <div className="section">
           <Container>
             <div className="button-container"></div>
             <h3 className="title">About </h3>
             <h5 className="description">
-              The Career Development Wing of the Academics and Career Council
-              brings you a guide for resources useful for internship
+              The International Relations Wing of the Academics and Career
+              Council brings you a guide for resources useful for internship
               preparation. Browse through each section to find resources
               pertaining to your interest.
             </h5>

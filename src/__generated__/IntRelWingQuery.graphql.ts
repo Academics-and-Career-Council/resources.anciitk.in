@@ -6,10 +6,10 @@ import { ConcreteRequest } from "relay-runtime";
 
 export type ResourceType = "document" | "video" | "%future added value";
 export type SubResourceType = "gdrive" | "pdf" | "youtube" | "zoom" | "%future added value";
-export type CWingQueryVariables = {
+export type IntRelWingQueryVariables = {
     params: string;
 };
-export type CWingQueryResponse = {
+export type IntRelWingQueryResponse = {
     readonly getResourcesByWing: ReadonlyArray<{
         readonly id: string;
         readonly wing: string;
@@ -24,15 +24,15 @@ export type CWingQueryResponse = {
         }>;
     }>;
 };
-export type CWingQuery = {
-    readonly response: CWingQueryResponse;
-    readonly variables: CWingQueryVariables;
+export type IntRelWingQuery = {
+    readonly response: IntRelWingQueryResponse;
+    readonly variables: IntRelWingQueryVariables;
 };
 
 
 
 /*
-query CWingQuery(
+query IntRelWingQuery(
   $params: String!
 ) {
   getResourcesByWing(wing: $params) {
@@ -144,7 +144,7 @@ const node: ConcreteRequest = (function () {
             "argumentDefinitions": (v0 /*: any*/),
             "kind": "Fragment",
             "metadata": null,
-            "name": "CWingQuery",
+            "name": "IntRelWingQuery",
             "selections": (v3 /*: any*/),
             "type": "Query",
             "abstractKey": null
@@ -153,18 +153,18 @@ const node: ConcreteRequest = (function () {
         "operation": {
             "argumentDefinitions": (v0 /*: any*/),
             "kind": "Operation",
-            "name": "CWingQuery",
+            "name": "IntRelWingQuery",
             "selections": (v3 /*: any*/)
         },
         "params": {
-            "cacheID": "95b1a589f88fd9a4dc37d74e30bbd40b",
+            "cacheID": "fb18f2a0458ac4a08e29ec0ec98838eb",
             "id": null,
             "metadata": {},
-            "name": "CWingQuery",
+            "name": "IntRelWingQuery",
             "operationKind": "query",
-            "text": "query CWingQuery(\n  $params: String!\n) {\n  getResourcesByWing(wing: $params) {\n    id\n    wing\n    order\n    title\n    category\n    objects {\n      id\n      name\n      category\n      link\n    }\n  }\n}\n"
+            "text": "query IntRelWingQuery(\n  $params: String!\n) {\n  getResourcesByWing(wing: $params) {\n    id\n    wing\n    order\n    title\n    category\n    objects {\n      id\n      name\n      category\n      link\n    }\n  }\n}\n"
         }
     } as any;
 })();
-(node as any).hash = '514ef23cc7951c9b4f99520ce070c834';
+(node as any).hash = '591a11d34a955efb71d22d75c1f48e6e';
 export default node;

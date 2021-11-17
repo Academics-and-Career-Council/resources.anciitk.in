@@ -38,7 +38,7 @@
     "start-rewired": "react-app-rewired start",
     "build-rewired": "react-app-rewired build",
     "test-rewired": "react-app-rewired test --env=jsdom",
-    "relay": "relay-compiler --src ./src --schema ./graphql/schema.graphql --language typescript --artifactDirectory ./src/__generated__"
+    "relay": "relay-compiler --src ./src --schema ./src/graphql/schema.graphql --language typescript --artifactDirectory ./src/__generated__"
   },
   "eslintConfig": {
     "extends": [
