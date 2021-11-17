@@ -69,10 +69,8 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
             <div className="button-container"></div>
             <h3 className="title">About </h3>
             <h5 className="description">
-              The International Relations Wing of the Academics and Career
-              Council brings you a guide for resources useful for internship
-              preparation. Browse through each section to find resources
-              pertaining to your interest.
+              The International Relations Wing of the Academics and Career Council brings you a bunch of resources to help you on your journey to grab an international opportunity. Whether it is apping, deciding on MS vs PhD or confusion regarding which graduate school to choose, we have got you covered.
+
             </h5>
             <Row>
               <Col className="ml-auto mr-auto" md="6"></Col>
