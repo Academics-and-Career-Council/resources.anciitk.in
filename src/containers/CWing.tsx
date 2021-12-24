@@ -4,6 +4,7 @@ import { useEffect, Suspense } from "react";
 import Cwing from "pages/CWing";
 import { CWingQuery } from "__generated__/CWingQuery.graphql";
 import Loader from "../components/Loader";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const query = graphql`
   query CWingQuery($params: String!) {
@@ -29,14 +30,16 @@ const CWingContainer: React.FC = () => {
     loadQuery(
       { params: "career development" },
       {
-        fetchPolicy: "store-and-network",
+        fetchPolicy: "network-only",
       }
     );
   }, [loadQuery]);
 
   return (
     <Suspense fallback={<Loader />}>
-      {queryRef != null && <Cwing queryRef={queryRef} query={query} />}
+      <ErrorBoundary>
+        {queryRef != null && <Cwing queryRef={queryRef} query={query} />}
+      </ErrorBoundary>
     </Suspense>
   );
 };

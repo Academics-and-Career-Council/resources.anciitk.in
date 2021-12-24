@@ -4,6 +4,7 @@ import { useEffect, Suspense } from "react";
 import IntRelWing from "../pages/IntRelWing";
 import { IntRelWingQuery } from "../__generated__/IntRelWingQuery.graphql";
 import Loader from "../components/Loader";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const query = graphql`
   query IntRelWingQuery($params: String!) {
@@ -36,7 +37,9 @@ const CWingContainer: React.FC = () => {
 
   return (
     <Suspense fallback={<Loader />}>
-      {queryRef != null && <IntRelWing queryRef={queryRef} query={query} />}
+      <ErrorBoundary>
+        {queryRef != null && <IntRelWing queryRef={queryRef} query={query} />}
+      </ErrorBoundary>
     </Suspense>
   );
 };
