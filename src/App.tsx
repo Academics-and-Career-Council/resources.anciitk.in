@@ -14,7 +14,6 @@ import {
 import Cwing from "./containers/CWing";
 import IntRelWing from "./containers/IntRelWing";
 import Verify from "./pages/Verify";
-import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
@@ -29,7 +28,6 @@ function App() {
         <Route path="/intlrelwing">
           <IntRelWing />
         </Route>
-        <Route path="error" component={ErrorBoundary} />
         <Route path="/" component={Verify} />
         <DomRedirect to="/"></DomRedirect>
       </Switch>
