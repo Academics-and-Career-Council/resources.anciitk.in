@@ -78,14 +78,7 @@ function Wings() {
             <Col lg="6" md="12">
               <h2 className="title">International Relations Wing</h2>
               <h5 className="description">
-                Formation of this wing of the Council with the mandate of Career
-                Development of students shall provide an extraordinary boost in
-                regard to Career Aspects. It would also allow to bring all
-                entities in the Gymkhana oriented towards various sides of
-                career development under a single umbrella facilitating them and
-                their collaborations. The wing will make efforts to ensure that
-                CDC realizes its vision at the earliest possible and that it
-                provides all the necessary support for this purpose.
+               The International Relations wing works along with OIR (Office of International Relations) towards improving the relations of IIT Kanpur with its international counterparts through a collaborative mechanism, and hence promoting Exchange programs, Internships and Career opportunities in academia. The wing represents the students, works for their interests and is motivated to make itself as approachable as possible.
               </h5>
               <NavLink to="/intlrelwing">
                 <Button
