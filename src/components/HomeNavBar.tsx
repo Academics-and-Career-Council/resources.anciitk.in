@@ -10,15 +10,29 @@ import {
   Nav,
   Container,
   UncontrolledTooltip,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
+import { scroller } from "react-scroll";
 
 import { useRecoilState } from "recoil";
 import { recoilSessionState } from "../pkg/recoilDeclarations";
+
+function scrollToSection(callTo: string) {
+  scroller.scrollTo(callTo, {
+    duration: 500,
+    delay: 0,
+    smooth: "easeInOutQuad",
+  });
+}
 
 function HomeNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [session] = useRecoilState(recoilSessionState);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
@@ -78,6 +92,31 @@ function HomeNavbar() {
             navbar
           >
             <Nav navbar>
+              <NavItem>
+                <Dropdown
+                  isOpen={dropdownOpen}
+                  toggle={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  <DropdownToggle
+                    caret
+                    style={{ background: "none", margin: 0, marginTop: 3 }}
+                  >
+                    Wings
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem
+                      onClick={() => scrollToSection("career-development")}
+                    >
+                      Career Development
+                    </DropdownItem>
+                    <DropdownItem
+                      onClick={() => scrollToSection("international-relations")}
+                    >
+                      International Relations
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </NavItem>
               <NavItem>
                 <NavLink
                   href={

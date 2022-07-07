@@ -10,7 +10,7 @@ function Wings() {
     <>
       <div className="section section-nucleo-icons">
         <Container>
-          <Row>
+          <Row >
             <Col lg="6" md="12">
               <h2 className="title">Career Development Wing</h2>
               <h5 className="description">
@@ -55,8 +55,8 @@ function Wings() {
               </div>
             </Col>
           </Row>
-          <Row>
-          <Col lg="6" md="12">
+          <Row id="international-relations">
+            <Col lg="6" md="12">
               <div className="icons-container">
                 <i className="now-ui-icons ui-1_send"></i>
                 <i className="now-ui-icons ui-2_like"></i>
@@ -78,7 +78,13 @@ function Wings() {
             <Col lg="6" md="12">
               <h2 className="title">International Relations Wing</h2>
               <h5 className="description">
-               The International Relations wing works along with OIR (Office of International Relations) towards improving the relations of IIT Kanpur with its international counterparts through a collaborative mechanism, and hence promoting Exchange programs, Internships and Career opportunities in academia. The wing represents the students, works for their interests and is motivated to make itself as approachable as possible.
+                The International Relations wing works along with OIR (Office of
+                International Relations) towards improving the relations of IIT
+                Kanpur with its international counterparts through a
+                collaborative mechanism, and hence promoting Exchange programs,
+                Internships and Career opportunities in academia. The wing
+                represents the students, works for their interests and is
+                motivated to make itself as approachable as possible.
               </h5>
               <NavLink to="/intlrelwing">
                 <Button
@@ -92,7 +98,6 @@ function Wings() {
                 </Button>
               </NavLink>
             </Col>
-            
           </Row>
         </Container>
       </div>
