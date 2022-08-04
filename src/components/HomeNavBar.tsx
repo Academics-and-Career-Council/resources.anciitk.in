@@ -114,6 +114,16 @@ function HomeNavbar() {
                     >
                       International Relations
                     </DropdownItem>
+                    <DropdownItem
+                      onClick={() => scrollToSection("ug-acads-wing")}
+                    >
+                      UG Academics
+                    </DropdownItem>
+                    <DropdownItem
+                      onClick={() => scrollToSection("research-wing")}
+                    >
+                      Research Wing
+                    </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               </NavItem>
