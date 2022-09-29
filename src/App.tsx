@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import Cwing from "./containers/CWing";
 import IntRelWing from "./containers/IntRelWing";
+import Rwing from "./containers/RWing"
 import Verify from "./pages/Verify";
 
 function App() {
@@ -27,6 +28,12 @@ function App() {
         </Route>
         <Route path="/intlrelwing">
           <IntRelWing />
+        </Route>
+        <Route path="/rwing">
+          <Rwing />
+        </Route>
+        <Route path="/ugacadswing">
+          <Rwing />
         </Route>
         <Route path="/" component={Verify} />
         <DomRedirect to="/"></DomRedirect>

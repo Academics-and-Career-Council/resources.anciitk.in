@@ -112,6 +112,18 @@ function Wings() {
                 endeavors to protect the students’ academic interests 
                 and is the voice of the student body on this front.
               </h5>
+              {/* <NavLink to="/ugacadswing">
+                <Button
+                  id="ug-acads-wing"
+                  className="btn-round mr-1"
+                  color="dark"
+                  size="lg"
+                  target="_blank"
+                  na
+                >
+                  View Resources
+                </Button>
+              </NavLink> */}
             </Col>
             <Col lg="6" md="12">
               <div className="icons-container">
@@ -163,6 +175,18 @@ function Wings() {
                  to work upon diverse areas of research. To increase awareness about the variety of research going on in the campus, and promote research among the campus community. Specifically,
 Organizing Students’ Research Convention (SRC), Revival of PoWER (Promotion of Work Experience and Research), Developing an online research portal (database)
               </h5>
+              <NavLink to="/rwing">
+                <Button
+                  id="ug-acads-wing"
+                  className="btn-round mr-1"
+                  color="dark"
+                  size="lg"
+                  target="_blank"
+                  na
+                >
+                  View Resources
+                </Button>
+              </NavLink>
             </Col>
           </Row>
 
