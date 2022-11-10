@@ -112,7 +112,7 @@ function Wings() {
                 endeavors to protect the students’ academic interests 
                 and is the voice of the student body on this front.
               </h5>
-              {/* <NavLink to="/ugacadswing">
+              <NavLink to="/ugacadswing">
                 <Button
                   id="ug-acads-wing"
                   className="btn-round mr-1"
@@ -123,7 +123,7 @@ function Wings() {
                 >
                   View Resources
                 </Button>
-              </NavLink> */}
+              </NavLink>
             </Col>
             <Col lg="6" md="12">
               <div className="icons-container">

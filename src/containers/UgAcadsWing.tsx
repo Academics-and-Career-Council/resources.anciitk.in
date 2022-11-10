@@ -28,7 +28,7 @@ const UgAcadsWingContainer: React.FC = () => {
   const [queryRef, loadQuery] = useQueryLoader<UgAcadsWingQuery>(query);
   useEffect(() => {
     loadQuery(
-      { params: "ug academics" },
+      { params: "ug acads" },
       {
         fetchPolicy: "network-only",
       }

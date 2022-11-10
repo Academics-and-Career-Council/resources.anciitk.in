@@ -31,7 +31,7 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
   const history = useHistory();
 
   if (!session) {
-    history.push("/?next=intlrelwing");
+    history.push("/?next=ugacadswing");
   }
 
   const [result, setResult] = useState<
