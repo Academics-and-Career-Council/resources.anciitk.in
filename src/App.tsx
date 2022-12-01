@@ -13,8 +13,8 @@ import {
 } from "react-router-dom";
 import Cwing from "./containers/CWing";
 import IntRelWing from "./containers/IntRelWing";
-import Rwing from "./containers/RWing"
-import UGAcadsWing from "./containers/UgAcadsWing"
+import Rwing from "./containers/RWing";
+import UGAcadsWing from "./containers/UgAcadsWing";
 import Verify from "./pages/Verify";
 
 function App() {
@@ -24,18 +24,10 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-        <Route path="/cwing">
-          <Cwing />
-        </Route>
-        <Route path="/intlrelwing">
-          <IntRelWing />
-        </Route>
-        <Route path="/rwing">
-          <Rwing />
-        </Route>
-        <Route path="/ugacadswing">
-          <UGAcadsWing />
-        </Route>
+        <Route path="/cwing" component={Cwing} />
+        <Route path="/intlrelwing" component={IntRelWing} />
+        <Route path="/rwing" component={Rwing} />
+        <Route path="/ugacadswing" component={UGAcadsWing} />
         <Route path="/" component={Verify} />
         <DomRedirect to="/"></DomRedirect>
       </Switch>

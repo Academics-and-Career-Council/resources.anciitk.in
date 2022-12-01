@@ -15,6 +15,8 @@ import DocBlock from "../components/DocBlock";
 import VidBlock from "../components/VidBlock";
 import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery } from "react-relay";
+import { scrollToSection, getID } from "pkg/heplers";
+
 import {
   RWingQuery,
   RWingQueryResponse,
@@ -31,22 +33,28 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
   const history = useHistory();
 
   if (!session) {
-    history.push("/?next=intlrelwing");
+    const id = getID(window.location.href);
+    id === undefined
+      ? history.push("/?next=rwing")
+      : history.push(`/?next=rwing#${id}`);
   }
 
   const [result, setResult] = useState<
     RWingQueryResponse["getResourcesByWing"]
   >([]);
+
   const data = usePreloadedQuery<RWingQuery>(
     query,
     queryRef
   ).getResourcesByWing;
+
   useEffect(() => {
     let copy: DeepWriteable<RWingQueryResponse["getResourcesByWing"]> =
       JSON.parse(JSON.stringify(data));
     copy.sort((a, b) => a.order - b.order);
     setResult(copy);
   }, [data]);
+
   useEffect(() => {
     document.title = "International Realtions Wing | Resources | AnC";
     document.body.classList.add("profile-page");
@@ -59,6 +67,11 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
       document.body.classList.remove("sidebar-collapse");
     };
   }, []);
+
+  useEffect(() => {
+    scrollToSection(getID(window.location.href));
+  });
+
   return (
     <>
       <WingNavbar wingname="RESEARCH WING" />

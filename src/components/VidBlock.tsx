@@ -14,7 +14,8 @@ import {
 } from "reactstrap";
 
 import { subItem } from "../Types/types";
-
+import { LinkOutlined } from "@ant-design/icons";
+import { copyToClipboard } from "pkg/heplers";
 interface props {
   id: string;
   wing: string;
@@ -24,23 +25,38 @@ interface props {
   readonly objects: Readonly<Array<subItem>>;
 }
 
-const VidBlock: React.FC<props> = ({
-  title,
-  objects,
-}) => {
+
+const handleBlock = (name: string) => {
+  const baseUrl = window.location.href.split("#")[0];
+  copyToClipboard(`${baseUrl}#${name}`);
+  // message.success(`Link to ${name} Copied`);
+  // message.config({
+  //   top: 400,
+  //   duration: 2,
+  //   maxCount: 3,
+  //   prefixCls: `Link to ${name} Copied`,
+  // });
+};
+
+const VidBlock: React.FC<props> = ({ title, objects }) => {
   const [iconPills, setIconPills] = useState("0");
   return (
     <Container>
       <Row>
-        <p className="category">{title}</p>
+        <p className="category" id={title.replaceAll(" ", "")}>
+          {title} &nbsp;
+          <LinkOutlined
+            onClick={() => handleBlock(title.replaceAll(" ", ""))}
+          />
+        </p>
         <Card>
           <CardHeader>
             <Nav className="justify-content-center" role="tablist" tabs>
               {objects.map((resource, index) => {
                 return (
-                  <NavItem>
+                  <NavItem key={resource.id}>
                     <NavLink
-                      key={resource.id}
+                      // key={resource.id}
                       className={iconPills === index.toString() ? "active" : ""}
                       href="#pablo"
                       onClick={(e) => {

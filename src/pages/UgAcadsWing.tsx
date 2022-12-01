@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { useRecoilState } from "recoil";
 import { recoilSessionState } from "../pkg/recoilDeclarations";
+import { scrollToSection, getID } from "pkg/heplers";
 
 // reactstrap components
 import { Container, Row, Col } from "reactstrap";
@@ -19,6 +20,7 @@ import {
   UgAcadsWingQuery,
   UgAcadsWingQueryResponse,
 } from "../__generated__/UgAcadsWingQuery.graphql";
+
 interface props {
   queryRef: any;
   query: GraphQLTaggedNode;
@@ -31,7 +33,10 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
   const history = useHistory();
 
   if (!session) {
-    history.push("/?next=ugacadswing");
+    const id = getID(window.location.href);
+    id === undefined
+      ? history.push("/?next=ugacadswing")
+      : history.push(`/?next=ugacadswing#${id}`);
   }
 
   const [result, setResult] = useState<
@@ -41,12 +46,14 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
     query,
     queryRef
   ).getResourcesByWing;
+
   useEffect(() => {
     let copy: DeepWriteable<UgAcadsWingQueryResponse["getResourcesByWing"]> =
       JSON.parse(JSON.stringify(data));
     copy.sort((a, b) => a.order - b.order);
     setResult(copy);
   }, [data]);
+
   useEffect(() => {
     document.title = "International Realtions Wing | Resources | AnC";
     document.body.classList.add("profile-page");
@@ -59,6 +66,11 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
       document.body.classList.remove("sidebar-collapse");
     };
   }, []);
+
+  useEffect(() => {
+    scrollToSection(getID(window.location.href));
+  });
+
   return (
     <>
       <WingNavbar wingname="UG ACADEMICS WING" />

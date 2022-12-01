@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 //Resources
 import DocBlock from "../components/DocBlock";
 import VidBlock from "../components/VidBlock";
+import { scrollToSection, getID } from "pkg/heplers";
 import { GraphQLTaggedNode } from "relay-runtime";
 import { usePreloadedQuery } from "react-relay";
 import {
@@ -31,7 +32,10 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
   const history = useHistory();
 
   if (!session) {
-    history.push("/?next=intlrelwing");
+    const id = getID(window.location.href);
+    id === undefined
+      ? history.push("/?next=intlrelwing")
+      : history.push(`/?next=intlrelwing#${id}`);
   }
 
   const [result, setResult] = useState<
@@ -41,12 +45,14 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
     query,
     queryRef
   ).getResourcesByWing;
+
   useEffect(() => {
     let copy: DeepWriteable<IntRelWingQueryResponse["getResourcesByWing"]> =
       JSON.parse(JSON.stringify(data));
     copy.sort((a, b) => a.order - b.order);
     setResult(copy);
   }, [data]);
+
   useEffect(() => {
     document.title = "International Realtions Wing | Resources | AnC";
     document.body.classList.add("profile-page");
@@ -59,18 +65,26 @@ const Cwing: React.FC<props> = ({ queryRef, query }) => {
       document.body.classList.remove("sidebar-collapse");
     };
   }, []);
+
+  useEffect(() => {
+    scrollToSection(getID(window.location.href));
+  });
+
   return (
     <>
       <WingNavbar wingname="INTERNATIONAL RELATIONS WING" />
       <div className="wrapper">
-        <WingHeader wing="INTERNATIONAL RELATIONS WING"/>
+        <WingHeader wing="INTERNATIONAL RELATIONS WING" />
         <div className="section">
           <Container>
             <div className="button-container"></div>
             <h3 className="title">About </h3>
             <h5 className="description">
-              The International Relations Wing of the Academics and Career Council brings you a bunch of resources to help you on your journey to grab an international opportunity. Whether it is apping, deciding on MS vs PhD or confusion regarding which graduate school to choose, we have got you covered.
-
+              The International Relations Wing of the Academics and Career
+              Council brings you a bunch of resources to help you on your
+              journey to grab an international opportunity. Whether it is
+              apping, deciding on MS vs PhD or confusion regarding which
+              graduate school to choose, we have got you covered.
             </h5>
             <Row>
               <Col className="ml-auto mr-auto" md="6"></Col>

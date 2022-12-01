@@ -30,7 +30,7 @@ const Component: React.FC<props> = ({location}) => {
       sessionState={session}
       setSessionState={setSession}
       basePath={`${process.env.REACT_APP_PUBLIC_BASE_URL}`}
-      path={param as string}
+      path={`${param}${location.hash}`}
       ory={ory}
       xenon={xenon}
     />
